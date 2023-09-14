@@ -46,9 +46,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     modalContainer.classList.add('modal-container');
                     modalContainer.classList.add('fc-event-tooltip');
 
+                    console.log(info.event.extendedProps.downloadICS);
+                    console.log(info.event.extendedProps);
+
                     const modalContent = document.createElement('div');
                     modalContent.classList.add('modal-content');
-                    modalContent.innerHTML = `<b>${info.event.title}</b><br></br><strong>Start:</strong> ${info.event.start.toLocaleString()} EST<br><strong>End:</strong> ${info.event.end.toLocaleString()} EST<br><br>${info.event.extendedProps.description}<br>`;
+                    modalContent.innerHTML = `<b>${info.event.title}</b><br></br><strong>Start:</strong> ${info.event.start} EST<br><strong>End:</strong> ${info.event.end} EST<br><br>${info.event.extendedProps.description}<br>`;
+
+                    console.log(info.event.start);
+                    console.log(info.event);
+                    console.log(info.event.startTime);
 
                     // Add a "Download ICS" button to the popup
                     const downloadButton = document.createElement('button');
