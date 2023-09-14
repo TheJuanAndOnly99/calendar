@@ -53,6 +53,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     modalContent.classList.add('modal-content');
                     modalContent.innerHTML = `<b>${info.event.title}</b><br></br><strong>Start:</strong> ${info.event.start} EST<br><strong>End:</strong> ${info.event.end} EST<br><br>${info.event.extendedProps.description}<br>`;
 
+                    console.log(info.event.start);
+                    console.log(info.event);
+                    console.log(info.event.startTime);
+
                     // Add a "Download ICS" button to the popup
                     const downloadButton = document.createElement('button');
                     downloadButton.innerHTML = 'Download ICS';
