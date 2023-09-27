@@ -1,8 +1,9 @@
-import { Calendar } from '@fullcalendar/core';
+import { Calendar, formatDate } from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import iCalendarPlugin from '@fullcalendar/icalendar';
+import momentTimezonePlugin from '@fullcalendar/moment-timezone'
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 import './index.css';
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const currentDate = new Date().toISOString().slice(0, 10);
 
     var calendar = new Calendar(calendarEl, {
-        plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin, iCalendarPlugin],
+        plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin, iCalendarPlugin, momentTimezonePlugin],
         events: {
             url: 'basic.ics',
             format: 'ics'
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         navLinks: true, // can click day/week names to navigate views
         editable: true,
         dayMaxEvents: false, // allow "more" link when too many events
+        timeZone: 'America/New_York',
         eventContent: function (info) {
             return {
                 html: `<b class="fc-event-title">${info.event.title}</b>`
@@ -45,10 +47,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     const modalContainer = document.createElement('div');
                     modalContainer.classList.add('modal-container');
                     modalContainer.classList.add('fc-event-tooltip');
+                    
+                    const startTime = info.event.start
+                    const endTime = info.event.end
 
                     const modalContent = document.createElement('div');
                     modalContent.classList.add('modal-content');
-                    modalContent.innerHTML = `<b>${info.event.title}</b><br></br><strong>Start:</strong> ${info.event.start.toLocaleString()} EST<br><strong>End:</strong> ${info.event.end.toLocaleString()} EST<br><br>${info.event.extendedProps.description}<br>`;
+                    modalContent.innerHTML = `<b>${info.event.title}</b><br></br><strong>Start:</strong> ${startTime}<br><strong>End:</strong> ${endTime}<br><br>${info.event.extendedProps.description}<br>`;
 
                     // Add a "Download ICS" button to the popup
                     const downloadButton = document.createElement('button');
