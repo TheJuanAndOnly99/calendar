@@ -3,6 +3,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import iCalendarPlugin from '@fullcalendar/icalendar';
+import momentTimezonePlugin from '@fullcalendar/moment-timezone'
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 import './index.css';
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const currentDate = new Date().toISOString().slice(0, 10);
 
     var calendar = new Calendar(calendarEl, {
-        plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin, iCalendarPlugin],
+        plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin, iCalendarPlugin, momentTimezonePlugin],
         events: {
             url: 'basic.ics',
             format: 'ics'
