@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         month: 'long',
                         day: 'numeric',
                         minute: '2-digit',
-                        timeZoneName: 'short'
+                        timeZoneName: 'long'
                     });
 
                     const formattedEndTime = formatDate(endTime, {
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         month: 'long',
                         day: 'numeric',
                         minute: '2-digit',
-                        timeZoneName: 'short'
+                        timeZoneName: 'long'
                     });
                     
                     
